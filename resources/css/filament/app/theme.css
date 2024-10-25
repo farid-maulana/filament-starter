@@ -1,0 +1,11 @@
+@import '/vendor/filament/filament/resources/css/theme.css';
+
+@config 'tailwind.config.js';
+
+.fi-sidebar {
+    @apply bg-white shadow-md ring-1 ring-gray-950/5 dark:bg-gray-900 dark:ring-white/10 !important;
+}
+
+.fi-sidebar-header {
+    @apply ring-0 dark:ring-0 lg:shadow-none !important;
+}
