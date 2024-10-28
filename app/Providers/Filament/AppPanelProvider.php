@@ -21,6 +21,7 @@ use Illuminate\Session\Middleware\StartSession;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
 use Joaopaulolndev\FilamentEditProfile\FilamentEditProfilePlugin;
 use Joaopaulolndev\FilamentEditProfile\Pages\EditProfilePage;
+use pxlrbt\FilamentSpotlight\SpotlightPlugin;
 
 class AppPanelProvider extends PanelProvider
 {
@@ -92,6 +93,7 @@ class AppPanelProvider extends PanelProvider
                     ->shouldShowSanctumTokens(
                         permissions: ['custom', 'abilities', 'permissions'] //optional
                     ),
+                SpotlightPlugin::make(),
             ]);
     }
 }
