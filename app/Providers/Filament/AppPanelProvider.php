@@ -94,6 +94,9 @@ class AppPanelProvider extends PanelProvider
                         permissions: ['custom', 'abilities', 'permissions'] //optional
                     ),
                 SpotlightPlugin::make(),
+            ])
+            ->resources([
+                config('filament-logger.activity_resource')
             ]);
     }
 }
