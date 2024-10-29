@@ -23,6 +23,7 @@ use Illuminate\Session\Middleware\StartSession;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
 use Joaopaulolndev\FilamentEditProfile\FilamentEditProfilePlugin;
 use Joaopaulolndev\FilamentEditProfile\Pages\EditProfilePage;
+use pxlrbt\FilamentEnvironmentIndicator\EnvironmentIndicatorPlugin;
 use pxlrbt\FilamentSpotlight\SpotlightPlugin;
 
 class AppPanelProvider extends PanelProvider
@@ -36,7 +37,7 @@ class AppPanelProvider extends PanelProvider
             ->path('app')
             ->login()
 //            ->sidebarCollapsibleOnDesktop()
-            ->sidebarWidth('18rem')
+            ->sidebarWidth('16rem')
             ->colors([
                 'primary' => Color::Indigo,
                 'secondary' => Color::Gray,
@@ -59,7 +60,7 @@ class AppPanelProvider extends PanelProvider
             ->userMenuItems([
                 'profile' => MenuItem::make()
                     ->label('My Profile')
-                    ->url(fn (): string => EditProfilePage::getUrl())
+                    ->url(fn(): string => EditProfilePage::getUrl())
                     ->icon('heroicon-m-user-circle'),
             ])
             ->middleware([
@@ -97,7 +98,15 @@ class AppPanelProvider extends PanelProvider
                         permissions: ['custom', 'abilities', 'permissions'] //optional
                     ),
                 SpotlightPlugin::make(),
-                ThemesPlugin::make(),
+//                ThemesPlugin::make(),
+                EnvironmentIndicatorPlugin::make()
+                    ->visible(fn() => app()->environment() !== 'production')
+                    ->color(fn() => match (app()->environment()) {
+                        'production' => null,
+                        'staging' => Color::Orange,
+                        default => Color::Red,
+                    })
+                    ->showBorder(false),
             ])
             ->resources([
                 config('filament-logger.activity_resource')
