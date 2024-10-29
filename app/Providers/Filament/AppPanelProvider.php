@@ -12,6 +12,8 @@ use Filament\Panel;
 use Filament\PanelProvider;
 use Filament\Support\Colors\Color;
 use Filament\Widgets;
+use Hasnayeen\Themes\Http\Middleware\SetTheme;
+use Hasnayeen\Themes\ThemesPlugin;
 use Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse;
 use Illuminate\Cookie\Middleware\EncryptCookies;
 use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken;
@@ -34,7 +36,7 @@ class AppPanelProvider extends PanelProvider
             ->path('app')
             ->login()
 //            ->sidebarCollapsibleOnDesktop()
-            ->sidebarWidth('16rem')
+            ->sidebarWidth('18rem')
             ->colors([
                 'primary' => Color::Indigo,
                 'secondary' => Color::Gray,
@@ -70,6 +72,7 @@ class AppPanelProvider extends PanelProvider
                 SubstituteBindings::class,
                 DisableBladeIconComponents::class,
                 DispatchServingFilamentEvent::class,
+                SetTheme::class,
             ])
             ->authMiddleware([
                 Authenticate::class,
@@ -94,6 +97,7 @@ class AppPanelProvider extends PanelProvider
                         permissions: ['custom', 'abilities', 'permissions'] //optional
                     ),
                 SpotlightPlugin::make(),
+                ThemesPlugin::make(),
             ])
             ->resources([
                 config('filament-logger.activity_resource')
