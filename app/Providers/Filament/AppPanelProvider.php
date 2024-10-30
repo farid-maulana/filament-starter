@@ -25,6 +25,7 @@ use Joaopaulolndev\FilamentEditProfile\FilamentEditProfilePlugin;
 use Joaopaulolndev\FilamentEditProfile\Pages\EditProfilePage;
 use pxlrbt\FilamentEnvironmentIndicator\EnvironmentIndicatorPlugin;
 use pxlrbt\FilamentSpotlight\SpotlightPlugin;
+use ShuvroRoy\FilamentSpatieLaravelHealth\FilamentSpatieLaravelHealthPlugin;
 
 class AppPanelProvider extends PanelProvider
 {
@@ -107,6 +108,7 @@ class AppPanelProvider extends PanelProvider
                         default => Color::Red,
                     })
                     ->showBorder(false),
+                FilamentSpatieLaravelHealthPlugin::make(),
             ])
             ->resources([
                 config('filament-logger.activity_resource')

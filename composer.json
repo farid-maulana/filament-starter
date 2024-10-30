@@ -17,6 +17,7 @@
         "pxlrbt/filament-environment-indicator": "^2.0",
         "pxlrbt/filament-excel": "^2.1",
         "pxlrbt/filament-spotlight": "^1.2",
+        "shuvroroy/filament-spatie-laravel-health": "^2.1",
         "z3d0x/filament-logger": "^0.7.2"
     },
     "require-dev": {
