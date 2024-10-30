@@ -58,6 +58,10 @@ class AppPanelProvider extends PanelProvider
                 Widgets\AccountWidget::class,
                 Widgets\FilamentInfoWidget::class,
             ])
+            ->navigationGroups([
+                'App Management',
+                'Settings',
+            ])
             ->userMenuItems([
                 'profile' => MenuItem::make()
                     ->label('My Profile')
