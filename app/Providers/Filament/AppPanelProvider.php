@@ -3,6 +3,7 @@
 namespace App\Providers\Filament;
 
 use BezhanSalleh\FilamentShield\FilamentShieldPlugin;
+use CharrafiMed\GlobalSearchModal\GlobalSearchModalPlugin;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\DisableBladeIconComponents;
 use Filament\Http\Middleware\DispatchServingFilamentEvent;
@@ -113,6 +114,7 @@ class AppPanelProvider extends PanelProvider
                     })
                     ->showBorder(false),
                 FilamentSpatieLaravelHealthPlugin::make(),
+                GlobalSearchModalPlugin::make(),
             ])
             ->resources([
                 config('filament-logger.activity_resource')
